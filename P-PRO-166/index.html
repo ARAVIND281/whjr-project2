@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Web AR Using A-Frame</title>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+  <script src="https://raw.githack.com/whitehatjr/ar-gesture-handler/main/index.js"></script>
+
+</head>
+
+<body style="margin : 0px; overflow: hidden;">
+
+  <a-scene embedded arjs>
+
+    <a-assets>
+      <a-asset-item id="battery" src="./assets/battery_low_poly/scene.gltf"></a-asset-item>
+      <a-asset-item id="bulb" src="./assets/light_bulb/scene.gltf"></a-asset-item>
+      <a-asset-item id="switch" src="./assets/light_switch_single/scene.gltf"></a-asset-item>
+      <img id="dir"  src="./assets/images/arrow.jpeg">
+    </a-assets>
+
+    <a-marker preset="hiro">
+
+      <a-plane id="base" position="0 0 -0.5" rotation="-90 0 0" height="2" width="2">
+      </a-plane>
+
+      <a-entity id="model1" position="-0.2 0.05 -0.3" gltf-model="#battery" rotation="0 -270 90" scale="0.01 0.01 0.01">
+      </a-entity>
+
+      <a-entity id="model2" position="-0.6 1 -0.3" gltf-model="#bulb" rotation="-90 0 0" scale="0.3 0.3 0.3">
+      </a-entity>
+
+      <a-entity id="model3" position="0.3 1 -0.3" gltf-model="#switch" rotation="-90 180 0" scale="0.001 0.001 0.001">
+      </a-entity>
+
+      <a-entity id="charge1" position="0 0 -0.5" rotation="0 0 0"
+        animation="property: position;from: -0.5 1 -0.3; to: -1.1 1 -0.3;easing:linear; loop: true; dur: 1000">
+        <a-plane position="1 0 0" rotation="-90 0 0" height="0.1" width="0.1"  src="#dir">
+        </a-plane>
+      </a-entity>
+
+      <a-entity id="charge2" position="0 0 -0.5" rotation="0 0 0"
+        animation="property: position;from: -1.5 0.01 -0.3; to: -0.5 0.01 -0.3;easing:linear; loop: true; dur: 500">
+        <a-plane position="1 0 0" rotation="-90 180 0" height="0.1" width="0.1"  src="#dir">
+        </a-plane>
+      </a-entity>
+
+      <a-entity id="charge3" position="0 0 -0.5" rotation="0 0 0"
+        animation="property: position;to: 0.5 1 -0.3; from: 0.5 0.05 -0.3;easing:linear; loop: true; dur: 500">
+        <a-plane position="0 0 0" rotation="-90 270 0" height="0.1" width="0.1"  src="#dir">
+        </a-plane>
+      </a-entity>
+
+      <a-entity id="charge4" position="0 0 -0.5" rotation="0 0 0"
+        animation="property: position;to: -1.1 0.05 -0.3; from: -1.1 1 -0.3;easing:linear; loop: true; dur: 500">
+        <a-plane position="0.5 0 0" rotation="-90 90 0" height="0.1" width="0.1"  src="#dir">
+        </a-plane>
+      </a-entity>
+
+    </a-marker>
+
+  </a-scene>
+
+</body>
+
+</html>
